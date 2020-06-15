@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+import "proto/api/api.proto";
+import "proto/data/article_data.proto";
+
+package proto.api;
+option go_package="blog/proto/api";
+
+/// Service
+service Article {
+  rpc Get(ArticleService.GetRequest) returns (ArticleService.GetResponse) {}
+  rpc List(ArticleService.ListRequest) returns (ArticleService.ListResponse) {}
+}
+
+/// Request/Response
+message ArticleService {
+
+  // -------------------------------------
+  // Get
+  // -------------------------------------
+  message GetRequest {
+    proto.api.RequestHeader header = 1;
+
+    string article_id = 2; /// 記事ID
+  }
+
+  message GetResponse {
+    proto.api.ResponseHeader header = 1;
+
+    proto.data.ArticleData article_data = 2; /// 記事データ
+  }
+
+  // -------------------------------------
+  // List
+  // -------------------------------------
+  message ListRequest {
+    proto.api.RequestHeader header = 1;
+  }
+
+  message ListResponse {
+    proto.api.ResponseHeader header = 1;
+
+    repeated proto.data.ArticleData article_data = 2; /// 記事データリスト
+  }
+}

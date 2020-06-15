@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto.data;
+option go_package="blog/proto/data";
+
+// エラー
+message Error {
+  ErrorCode error_code    = 1; /// エラーコード
+  string    error_message = 2; /// エラーメッセージ
+}
+
+// エラーコード
+enum ErrorCode {
+  UNKNOWN            = 0;    /// 不明なエラー
+  UNDEFINED_SERVICE  = 1;    /// サービスがみつからない
+  UNDEFINED_METHOD   = 2;    /// メソッドがみつからない
+  NOT_CONNECTED      = 3;    /// 通信エラー 
+  INVALID_SESSION    = 4;    /// セッショントークンエラー
+
+  // データ系
+  DATA_NOT_FOUND     = 200;  /// データが見つからない
+  DATA_ALREADY_EXIST = 201;  /// データがすでに存在する
+
+  // メンテナンス系
+  UNDER_MAINTENANCE  = 300;  /// メンテ中
+
+  // アプリエラー系
+  INVALID_ARGUMENT   = 401;  /// 不正な引数
+}

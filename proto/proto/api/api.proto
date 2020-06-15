@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "proto/data/error.proto";
+
+package proto.api;
+option go_package="blog/proto/api";
+
+message RequestHeader
+{
+  string uuid = 1; /// UUID
+}
+
+message ResponseHeader
+{
+  proto.data.Error error = 1;  /// エラー
+}
