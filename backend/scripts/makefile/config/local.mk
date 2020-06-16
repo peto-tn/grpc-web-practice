@@ -1,0 +1,11 @@
+local:
+	$(eval LISTEN_PORT := 37004)
+	$(eval ENV_NAME := local)
+	$(eval DBMS := mysql)
+	$(eval DB_USER := root)
+	$(eval DB_PASSWORD := mysql)
+	$(eval DB_HOST := 127.0.0.1)
+	$(eval DB_PORT := 3306)
+	$(eval DB_NAME := blog)
+	$(eval DB_MAX_CONNECTIONS := 10)
+	$(eval READER_DB_HOST := 127.0.0.1)
