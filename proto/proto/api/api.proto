@@ -3,7 +3,7 @@ syntax = "proto3";
 import "proto/data/error.proto";
 
 package proto.api;
-option go_package="blog/proto/api";
+option go_package="proto/api";
 
 message RequestHeader
 {

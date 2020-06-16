@@ -17,5 +17,6 @@ for proto_dir in api data; do
     for proto_file in ${proto_files[@]}; do
         service=$(basename ${proto_file%.*})
         $PROTOC --go_out=plugins=grpc:$DATA_DIR $PROTO_DIR/$service.proto
+        sed -i "" -e "s/proto\/data/blog\/app\/proto\/data/" $DATA_DIR/$PROTO_DIR/$service.pb.go
     done
 done

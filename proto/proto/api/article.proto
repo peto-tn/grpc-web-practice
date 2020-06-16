@@ -4,42 +4,38 @@ import "proto/api/api.proto";
 import "proto/data/article_data.proto";
 
 package proto.api;
-option go_package="blog/proto/api";
+option go_package="proto/api";
 
 /// Service
 service Article {
-  rpc Get(ArticleService.GetRequest) returns (ArticleService.GetResponse) {}
-  rpc List(ArticleService.ListRequest) returns (ArticleService.ListResponse) {}
+  rpc Get(GetArticleRequest) returns (GetArticleResponse) {}
+  rpc List(ListArticleRequest) returns (ListArticleResponse) {}
 }
 
-/// Request/Response
-message ArticleService {
+// -------------------------------------
+// GetArticle
+// -------------------------------------
+message GetArticleRequest {
+  proto.api.RequestHeader header = 1;
 
-  // -------------------------------------
-  // Get
-  // -------------------------------------
-  message GetRequest {
-    proto.api.RequestHeader header = 1;
+  int64 article_id = 2; /// 記事ID
+}
 
-    string article_id = 2; /// 記事ID
-  }
+message GetArticleResponse {
+  proto.api.ResponseHeader header = 1;
 
-  message GetResponse {
-    proto.api.ResponseHeader header = 1;
+  proto.data.ArticleData article_data = 2; /// 記事データ
+}
 
-    proto.data.ArticleData article_data = 2; /// 記事データ
-  }
+// -------------------------------------
+// List
+// -------------------------------------
+message ListArticleRequest {
+  proto.api.RequestHeader header = 1;
+}
 
-  // -------------------------------------
-  // List
-  // -------------------------------------
-  message ListRequest {
-    proto.api.RequestHeader header = 1;
-  }
+message ListArticleResponse {
+  proto.api.ResponseHeader header = 1;
 
-  message ListResponse {
-    proto.api.ResponseHeader header = 1;
-
-    repeated proto.data.ArticleData article_data = 2; /// 記事データリスト
-  }
+  repeated proto.data.ArticleData article_data = 2; /// 記事データリスト
 }

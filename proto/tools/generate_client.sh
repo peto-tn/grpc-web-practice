@@ -6,7 +6,7 @@ PROG_DIR=$(pwd); cd $WORK_DIR
 PROTOC=protoc
 
 BASE_DIR=$PROG_DIR/..
-DATA_DIR=$PROG_DIR/../../client
+DATA_DIR=$PROG_DIR/../../client/src
 
 cd $BASE_DIR
 
